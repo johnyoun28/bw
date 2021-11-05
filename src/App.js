@@ -1,9 +1,18 @@
 import './App.css';
+import Login from './Components/Login'
+import Header from './Components/Header';
+import {Route, Routes, Switch} from 'react-router-dom'
+import Register from './Components/Register';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Header />
+
+      <Switch>
+      <Route  path='/Login' component={Login}></Route>
+        <Route  path='/register' component={Register}></Route>
+      </Switch>
     </div>
   );
 }
