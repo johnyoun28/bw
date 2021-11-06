@@ -1,17 +1,17 @@
 import './App.css';
 import Login from './Components/Login'
 import Header from './Components/Header';
-import {Route, Routes, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import Register from './Components/Register';
 
 const App = () => {
   return (
     <div className="App">
-      <Header />
+      <Header/>
 
       <Switch>
-      <Route  path='/Login' component={Login}></Route>
-        <Route  path='/register' component={Register}></Route>
+        <Route path='/register' component={Register}></Route>
+      <Route path='/' component={Login}></Route>
       </Switch>
     </div>
   );
