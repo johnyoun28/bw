@@ -5,7 +5,7 @@ import {
 } from '../actions/index'
 
 const initialState = {
-    projects: [],
+    techs: [],
     isLoading: true,
     error: ''
 }
@@ -21,7 +21,7 @@ export const reducer = (state = initialState, action) => {
         case "FETCH_SUCCESS":
             return {
                 ...state,
-                projects: action.payload,
+                techs: action.payload,
                 isLoading: false,
                 err: '',
             }

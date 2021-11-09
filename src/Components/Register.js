@@ -4,13 +4,14 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 const initialFormValues = {
-    firstname: '',
-    lastname: '',
+    username: '',
     password: ''
 }
 
 const Register = () => {
     const [formValues, setFormValues] = useState(initialFormValues)
+
+    const history = useHistory()
 
     const changeHandler = (evt) => {
         const {name, value} = evt.target
@@ -22,9 +23,14 @@ const Register = () => {
         axiosWithAuth()
         .post('/api/auth/register', formValues)
         .then(res => {
-            console.log(res)
-
+            localStorage.setItem('token', res.data.token)
+            history.push('/')
         })
+        .catch(err => {
+            console.log(err)
+        })
+
+        .finally(setFormValues(initialFormValues))
 
     }
 
@@ -33,28 +39,18 @@ const Register = () => {
             <h2>Register</h2>
             <form onSubmit={submitHandler}>
                 <input 
-                name='firstname'
+                name='username'
                 type='text'
                 onChange={changeHandler}
                 style={{ width: '350px' }}
-                value={formValues.firstname}
-                placeholder='first name'>
-                </input>
-                <br/>
-
-                <input 
-                name='lastname'
-                type='text'
-                onChange={changeHandler}
-                style={{ width: '350px' }}
-                value={formValues.lastname}
-                placeholder='last name'>
+                value={formValues.username}
+                placeholder='username'>
                 </input>
                 <br/>
 
                 <input 
                 name='password'
-                type='text'
+                type='password'
                 onChange={changeHandler}
                 style={{ width: '350px' }}
                 value={formValues.password}
