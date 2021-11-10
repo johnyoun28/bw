@@ -4,6 +4,7 @@ import PrivateRoute from './Components/PrivateRoute'
 import Dashboard from './Components/Dashboard'
 import Register from './Components/Register';
 import Login from './Components/Login'
+import TechDetails from './Components/TechDetails'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Link to='/register'>Register</Link>
 
       <Switch>
+        <PrivateRoute path='/tech/:id' component={TechDetails}></PrivateRoute>
         <PrivateRoute path='/dashboard' component={Dashboard}></PrivateRoute>
         
       <Route path='/register' component={Register}></Route>
