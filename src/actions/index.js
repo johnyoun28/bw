@@ -4,7 +4,7 @@ export const FETCH_START = "FETCH_START"
 export const FETCH_SUCCESS = "FETCH_SUCCESS"
 export const FETCH_FAILURE = "FETCH_FAILURE"
 
-export const fetchTechs = (dispatch) => {
+export const fetchTechs = () => (dispatch) => {
     dispatch({type: FETCH_START})
     axiosWithAuth()
     .get('/api/items')

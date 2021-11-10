@@ -1,12 +1,30 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {connect} from 'react-redux'
+import { fetchTechs } from '../actions'
+import DashboardCard from './DashboardCard'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+
+    useEffect(() => {
+        props.fetchTechs()
+    })
+
     return (
         <div>
-            <h1>Hello</h1>
+            {
+                props.techs.map(tech => (
+                    <DashboardCard tech={tech} key={tech.id}/>
+                ))
+            }
             
         </div>
     )
 }
 
-export default Dashboard
+const mapStateToProps = (state) => {
+    return {
+        techs: state.techs
+    }
+}
+
+export default connect(mapStateToProps, {fetchTechs}) (Dashboard)
