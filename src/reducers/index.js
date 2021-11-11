@@ -4,7 +4,10 @@ import {
     FETCH_FAILURE,
     FETCH_ITEM_START,
     FETCH_ITEM_SUCCESS,
-    FETCH_ITEM_FAILURE
+    FETCH_ITEM_FAILURE,
+    ADD_TECH_START,
+    ADD_TECH_SUCCESS,
+    ADD_TECH_FAILURE
 } from '../actions/index'
 
 const initialState = {
@@ -48,6 +51,24 @@ export const reducer = (state = initialState, action) => {
                     err: ''
                 }
             case "FETCH_ITEM_FAILURE":
+                return {
+                    ...state,
+                    isLoading: false,
+                    err: action.payload
+                }
+            case "ADD_TECH_START":
+                return {
+                    ...state,
+                    isLoading: true,
+                    err: ''
+                }
+            case "ADD_TECH_SUCCESS":
+                return {
+                    ...state,
+                    techs: [...state, action.payload],
+                    isLoading: false
+                }
+            case "ADD_TECH_FAILURE":
                 return {
                     ...state,
                     isLoading: false,

@@ -23,3 +23,15 @@ export const fetchTechDetails = (id) => (dispatch) => {
     .then(res => dispatch({ type: FETCH_ITEM_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: FETCH_ITEM_FAILURE, payload: err }))
 }
+
+export const ADD_TECH_START = "ADD_TECH_START"
+export const ADD_TECH_SUCCESS = "ADD_TECH_SUCCESS"
+export const ADD_TECH_FAILURE = "ADD_TECH_FAILURE"
+
+export const addTech = (tech) => (dispatch) => {
+    dispatch({ type: ADD_TECH_START })
+    axiosWithAuth()
+    .post('/api/items', tech)
+    .then(res => dispatch({ type: ADD_TECH_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: ADD_TECH_FAILURE, payload: err }))
+}
