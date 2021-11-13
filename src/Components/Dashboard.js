@@ -10,7 +10,7 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         props.fetchTechs()
-    })
+    },[])
 
     return (
         <div>

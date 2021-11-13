@@ -4,7 +4,7 @@ import { addTech } from '../actions'
 import { useHistory } from 'react-router'
 
 const initialFormValue = {
-    name: ''
+    item: ''
 }
 
 const AddTechForm = (props) => {
@@ -22,11 +22,13 @@ const AddTechForm = (props) => {
         evt.preventDefault()
 
         const newTech = {
-            name: formValues.name
+            item: formValues.item,
+            user_id: 1
         }
 
         props.addTech(newTech)
         history.push('/dashboard')
+        console.log(newTech)
     }
 
 
@@ -35,9 +37,9 @@ const AddTechForm = (props) => {
             <h2> Add Your Tech </h2>
             <form onSubmit={submitHandler}>
                 <input
-                name='name'
+                name='item'
                 type='text'
-                value={formValues.name}
+                value={formValues.item}
                 onChange={changeHandler}
                 placeholder='enter tech name'
                 ></input>
