@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux'
-import { useParams } from 'react-router'
-import { fetchTechDetails } from '../actions/index'
+import { useParams, useHistory } from 'react-router'
+import { fetchTechDetails, deleteTech } from '../actions/index'
 
 const TechDetails = (props) => {
 
     const { id } = useParams()
+    const history = useHistory()
 
     useEffect(() => {
         props.fetchTechDetails(id)
     },[])
 
+    const removeTech = () => {
+        props.deleteTech(id)
+        history.push('/dashboard')
+    }
+
     return (
         <div>
             <h3>Name: {props.techs.item}</h3>
             <button>Edit</button>
-            <button>Delete</button>
+            <button onClick={removeTech}>Delete</button>
         </div>
     )
 }
@@ -26,4 +32,4 @@ const TechDetails = (props) => {
         }
     }
 
-export default connect(mapStateToProps,{fetchTechDetails}) (TechDetails)
+export default connect(mapStateToProps,{fetchTechDetails, deleteTech}) (TechDetails)

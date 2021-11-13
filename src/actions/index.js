@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 export const FETCH_START = "FETCH_START"
@@ -34,4 +35,15 @@ export const addTech = (tech) => (dispatch) => {
     .post('/api/items', tech)
     .then(res => dispatch({ type: ADD_TECH_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: ADD_TECH_FAILURE, payload: err }))
+}
+
+export const DELETE_TECH_START = 'DELETE_TECH_START'
+export const DELETE_TECH_SUCCESS = 'DELETE_TECH_SUCCESS'
+
+export const deleteTech = (id) => (dispatch) => {
+    dispatch({ type: DELETE_TECH_START })
+    axiosWithAuth()
+    .delete(`/api/items/${id}`)
+    .then(res => dispatch({ type: DELETE_TECH_SUCCESS, payload: res.data }))
+    .catch(err => console.log(err))
 }
