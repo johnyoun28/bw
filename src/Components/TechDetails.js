@@ -10,12 +10,13 @@ const TechDetails = (props) => {
 
     useEffect(() => {
         props.fetchTechDetails(id)
-    },[])
+    },[props.fetchTechDetails, id])
 
     const removeTech = () => {
         props.deleteTech(id)
         history.push('/dashboard')
     }
+
 
     return (
         <div>
@@ -32,4 +33,4 @@ const TechDetails = (props) => {
         }
     }
 
-export default connect(mapStateToProps,{fetchTechDetails, deleteTech}) (TechDetails)
+export default connect(mapStateToProps,{fetchTechDetails, deleteTech, }) (TechDetails)

@@ -8,7 +8,10 @@ import {
     ADD_TECH_START,
     ADD_TECH_SUCCESS,
     ADD_TECH_FAILURE,
-    DELETE_TECH_SUCCESS
+    DELETE_TECH_SUCCESS,
+    EDIT_TECH_START,
+    EDIT_TECH_SUCCESS
+
 } from '../actions/index'
 
 const initialState = {
@@ -79,6 +82,15 @@ export const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     techs: action.payload
+                }
+            case "EDIT_TECH_START":
+                return {
+                    ...state,
+                    isLoading: true
+                }
+            case "EDIT_TECH_SUCCESS":
+                return {
+                    ...state
                 }
         default:
             return state

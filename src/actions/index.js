@@ -47,3 +47,14 @@ export const deleteTech = (id) => (dispatch) => {
     .then(res => dispatch({ type: DELETE_TECH_SUCCESS, payload: res.data }))
     .catch(err => console.log(err))
 }
+
+export const EDIT_TECH_START = 'EDIT_TECH_START'
+export const EDIT_TECH_SUCCESS = 'EDIT_TECH_SUCCESS'
+
+export const editTech = (item) => (dispatch) => {
+    dispatch({ type: EDIT_TECH_START })
+    axiosWithAuth()
+    .put(`/api/items/${item.id}`, item)
+    .then(res => dispatch({ type: EDIT_TECH_SUCCESS, payload: res.data }))
+    .catch(err => console.log(err))
+}
