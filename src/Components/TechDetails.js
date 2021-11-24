@@ -21,7 +21,7 @@ const TechDetails = (props) => {
     return (
         <div>
             <h3>Name: {props.techs.item}</h3>
-            <button>Edit</button>
+            <button onClick={() => history.push(`/edit-tech/${id}`)}>Edit</button>
             <button onClick={removeTech}>Delete</button>
         </div>
     )

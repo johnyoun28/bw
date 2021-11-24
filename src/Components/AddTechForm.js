@@ -28,7 +28,6 @@ const AddTechForm = (props) => {
 
         props.addTech(newTech)
         history.push('/dashboard')
-        console.log(newTech)
     }
 
 

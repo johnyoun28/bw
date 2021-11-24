@@ -6,6 +6,7 @@ import Register from './Components/Register';
 import Login from './Components/Login'
 import TechDetails from './Components/TechDetails'
 import AddTechForm from './Components/AddTechForm';
+import EditTechForm from './Components/EditTechForm';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Link to='/register'>Register</Link>
 
       <Switch>
+        <PrivateRoute path='/edit-tech/:id' component={EditTechForm}></PrivateRoute>
         <PrivateRoute path='/add-tech' component={AddTechForm}></PrivateRoute>
         <PrivateRoute path='/tech/:id' component={TechDetails}></PrivateRoute>
         <PrivateRoute path='/dashboard' component={Dashboard}></PrivateRoute>
